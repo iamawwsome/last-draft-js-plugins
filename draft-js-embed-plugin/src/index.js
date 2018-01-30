@@ -24,7 +24,19 @@ export default (config = {}) => {
   return {
     blockRendererFn: (block) => {
       if (block.getType() === 'atomic') {
-        const entity = Entity.get(block.getEntityAt(0))
+        let entity = undefined;
+
+        try {
+          // _draftJs.ContentState.createFromBlockArray([block]).getEntity(block.getEntityAt(0));
+          entity = Entity.get(block.getEntityAt(0))
+        } catch (error) {
+          if (error.message == 'Unknown DraftEntity key.') {
+            return;
+          } else {
+            throw error;
+          }
+        }
+
         const type = entity.getType()
         if (type === 'embed') {
           return {

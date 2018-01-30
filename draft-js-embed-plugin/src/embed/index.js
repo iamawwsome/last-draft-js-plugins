@@ -6,6 +6,7 @@ export default class Embed extends Component {
     const {
       block,
       theme = {},
+      contentState,
       ...otherProps
     } = this.props
     // leveraging destructuring to omit certain properties from props
@@ -20,7 +21,7 @@ export default class Embed extends Component {
       tree, // eslint-disable-line no-unused-vars
       ...elementProps
     } = otherProps
-    const { src } = Entity.get(block.getEntityAt(0)).getData()
+    const { src } = contentState.getEntity(block.getEntityAt(0))
     return (
       <div className={theme.embedStyles.embedWrapper}>
         <iframe
