@@ -31,8 +31,8 @@ export default class Sidebar extends React.Component {
       const editor = this.props.store.getItem('getEditorRef')().refs.editor
       this.setState({
         position: {
-          top: (top + window.scrollY),
-          left: editor.getBoundingClientRect().left - 25,
+          top: node.offsetTop,
+          left: -35,
           transform: 'scale(1)',
           transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)'
         }

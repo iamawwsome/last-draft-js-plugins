@@ -18,13 +18,13 @@ export default class Toolbar extends React.Component {
   }
 
   onVisibilityChanged = (isVisible) => {
-    const toolbarHeightOffset = 55
-    const selectionRect = isVisible ? getVisibleSelectionRect(window) : undefined
+    const toolbarHeightOffset = 176
+    selectionRect = isVisible ? window.getSelection().getRangeAt(0).getClientRects()[0] : undefined
 
     if (selectionRect === undefined || selectionRect === null) { return }
-    console.log(selectionRect)
+
     const top = (selectionRect.top === undefined) ? 0 : (selectionRect.top + window.scrollY) - toolbarHeightOffset
-    const left = (selectionRect.left === undefined) ? 0 : selectionRect.left + window.scrollX + (selectionRect.width / 2)
+    const left = (selectionRect.left === undefined) ? 0 : (selectionRect.left + window.scrollX)
     const position = { top, left }
     this.setState({position})
   }

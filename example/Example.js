@@ -126,7 +126,7 @@ export default class Example extends Component {
 
   render () {
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <div className='editor'>
           <Editor
             editorState={this.state.editorState}
