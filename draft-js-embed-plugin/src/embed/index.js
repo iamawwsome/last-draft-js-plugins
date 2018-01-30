@@ -21,7 +21,7 @@ export default class Embed extends Component {
       tree, // eslint-disable-line no-unused-vars
       ...elementProps
     } = otherProps
-    const { src } = contentState.getEntity(block.getEntityAt(0))
+    const { src } = contentState.getEntity(block.getEntityAt(0)).getData();
     return (
       <div className={theme.embedStyles.embedWrapper}>
         <iframe
